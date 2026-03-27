@@ -1,0 +1,34 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "products"
+    label: "Products"
+    folder: "_data/products"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Product Name", name: "title", widget: "string" }
+      - { label: "Category", name: "category", widget: "select", options: ["crochet", "tshirt", "journal", "mug"] }
+      - { label: "Price", name: "price", widget: "string", hint: "e.g. 38.00" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Product Photo", name: "image", widget: "image", required: false }
+      - { label: "Badge", name: "badge", widget: "select", options: ["", "New", "Bestseller", "Custom"], default: "" }
+      - { label: "Available", name: "available", widget: "boolean", default: true }
+
+  - name: "settings"
+    label: "Site Settings"
+    files:
+      - label: "General Settings"
+        name: "general"
+        file: "_data/settings.json"
+        fields:
+          - { label: "Shop Name", name: "shop_name", widget: "string" }
+          - { label: "Tagline", name: "tagline", widget: "string" }
+          - { label: "Email", name: "email", widget: "string" }
+          - { label: "Instagram Handle", name: "instagram", widget: "string" }
+          - { label: "Hero Subtitle", name: "hero_sub", widget: "text" }
